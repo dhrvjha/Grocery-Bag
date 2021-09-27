@@ -1,0 +1,36 @@
+{% extends 'bag/item_base.html' %}
+
+
+{% block item_base %}
+
+
+
+<h2>VIEW GROCERY LIST:</h2>
+<hr>
+<h6><a href=" {% url 'item-create' %} ">Add Items</a></h6>
+<form method="POST" class="d-flex">
+  {% csrf_token %}
+  <input class="form-control me-2" value="{{date}}" type="date" name='date' placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success" type="submit">Filter</button>
+</form>
+<div class="row">
+  {% for item in items %}
+
+
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.title }}</h5>
+        <p class="card-text">{{ item.quantity }}</p>
+        <p class="brought">{{ item.status }}</p>
+        <a href="update/{{item.uuid}}/">Update</a>
+        <form method="GET" action="delete/{{item.uuid}}/">
+          <input type="submit" class='btn btn-link' value='delete' />
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+
+  {% endblock item_base %}

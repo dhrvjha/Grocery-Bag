@@ -1,0 +1,16 @@
+{% extends 'accounts/form_base.html' %}
+{% load crispy_forms_tags %}
+{% block form_content %}
+
+        <div class="login-form">
+            <legend class="legend_login">Room</legend>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary">Sign In</button>
+                <a href={% url 'register' %} <button type="submit" class="btn btn-primary">Sign Up</button>
+                </a>
+            </form>
+        </div>
+
+{% endblock form_content %}

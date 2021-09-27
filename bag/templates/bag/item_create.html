@@ -1,0 +1,24 @@
+{% extends 'bag/item_base.html' %}
+
+
+{% block item_base %}
+
+<h2>ADD GROCERY LIST:</h2>
+<form method="POST">
+    {% csrf_token %}
+    <label>Item name:</label><br />
+    <input type="text" class="form-control" id="iname" name="iname" />
+    <label>Item quantity:</label><br />
+    <input type="number" class="form-control" id="iquant" name="iquant" />
+    <label>Item status:</label><br />
+    <select name="status" id="status" class="form-control">
+        <option value="PENDING">Pending</option>
+        <option value="NOT AVAILABLE">Not Avaliable</option>
+        <option value="BOUGHT">Bought</option>
+    </select>
+    <label>Date:</label><br />
+    <input type="date" class="form-control" id="date" name="date" /><br />
+
+    <input type="submit" class="btn btn-primary" label='Add'>
+</form>
+{% endblock item_base %}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--Bootstrap link-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+    <!--Fonts link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Croissant+One&display=swap" rel="stylesheet" />
+
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 100;
+        font-size: 15px;
+        line-height: 30px;
+        color: #231E23;
+        background: white;
+    }
+
+    h2,
+    h5 {
+        font-family: 'Croissant One', cursive;
+    }
+
+    h6 {
+        font-family: 'Ubuntu', sans-serif;
+        color: #5C7AEA;
+    }
+
+    .container {
+        background-color: #E5FBB8;
+        align-items: center;
+        margin: 5%;
+        padding: 2%;
+    }
+
+    .brought {
+        color: #1EAE98;
+    }
+
+    .unavailable {
+        color: tomato;
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <span style = "display: flex; justify-content:flex-end">
+            {% if user.is_authenticated %}
+            <button type="submit" class="btn btn-outline-info">{{user.username}}</button>
+            <a href="{% url 'logout' %}" class="btn btn-outline-info">Logout</a>
+            {% else %}
+            <a href="{% url 'login' %}" type="submit" class="btn btn-outline-info">Login</a>
+        </span>
+
+
+        {% endif %}
+    </div>
+
+    <div class="container">
+
+        {% block item_base %}
+
+        {% endblock item_base %}
+
+        <br />
+        <br />
+    </div>
+</body>
+
+</html>
